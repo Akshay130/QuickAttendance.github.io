@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code generator</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="main.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script> 
+
+    
+</head>
+<body>
+
+       
+    <div class="qrbox" id=temp>
+        <img src="logo.png" alt="qr-code">
+        <!-- <textarea></textarea> -->
+        <button id = "genBtn">Generate QR Code</button>
+        <p id = "countdown"></p>
+    </div>
+    <div class="qrbox" id=sheet>
+
+        <!-- <button id = "genAtt">Generate Attendance</button>
+        <ul id="list"></ul> -->
+        <table id="rollcall">
+            <thead id="info">
+            <th colspan="2"></th>
+            </thead>
+            <thead>
+            <th>Sr.No</th>
+            <th>Present Roll Numbers</th>
+            </thead>
+            
+            <tbody id="tbody1">
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

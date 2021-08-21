@@ -1,0 +1,77 @@
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+ width: 100%;
+ height: 100%;
+ background-color: #fff;
+ background-size: cover; 
+ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+ display: grid;
+ justify-content: center;
+ align-items: center;
+}
+
+
+.qrbox{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-row-gap: 10px;
+    color: #45489a;
+    }
+
+img {
+    height: 520px;
+    width: 520px;
+    padding: 1rem;
+    border: 2px solid #232323;
+    border-radius: 0.5rem;
+    grid-column: 1/-1;
+}
+
+button {
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color:#232323;
+    padding: 0.5rem 1rem;
+    border-radius:2rem;
+    transition: background-color 0.2s;
+    color: #fff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#countdown {
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid #232323;
+    border-radius:2rem;
+}
+
+
+
+button:hover {
+    background-color: #45489a;
+}
+
+table,th,td {
+    justify-content: center;
+    grid-column: 1/-1;
+    padding:0.1rem;
+    border: 1px solid black;
+}
+
+h3 {
+    justify-content: center;
+    grid-column: 1/-1;
+    padding: 0.5rem 10rem;
+}
+
