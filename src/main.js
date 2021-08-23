@@ -65,7 +65,7 @@ function generateQR() {
             tbody.appendChild(trow);
             };
     };
-    window.setTimeout(FetchAllData,9600)
+    window.setTimeout(FetchAllData,10000)
 }
 
 function hideQR(){
@@ -84,7 +84,7 @@ function start(){
         countdownEL.innerHTML = 'Creating Roll-call list in ' + t + ' sec';
         t--;
     }
-    window.setTimeout(hideQR,10000);
+    window.setTimeout(hideQR,11000);
   //  window.setTimeout(showsh,15000);
     qrbtn.disabled = true;
    
@@ -93,7 +93,7 @@ function start(){
 function both(){
     generateQR();
     start();
-    window.setTimeout(generate,10000);
+    window.setTimeout(generate,11000);
 }
 
 
