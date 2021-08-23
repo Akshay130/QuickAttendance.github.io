@@ -79,7 +79,7 @@ function hideQR(){
 function start(){
     let t = 10;
     const countdownEL = document.getElementById('countdown');
-    setInterval(updateCountDown,1000);
+    setInterval(updateCountDown,999);
     function updateCountDown(){
         countdownEL.innerHTML = 'Creating Roll-call list in ' + t + ' sec';
         t--;
