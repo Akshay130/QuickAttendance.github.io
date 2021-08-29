@@ -34,7 +34,7 @@ function generateQR() {
    // atbtn.addEventListener("click", FetchAllData);
 
     function FetchAllData() {
-        firebase.database().ref(data).orderByChild(number).limitToFirst(1000).once('value', function(snapshot){
+        firebase.database().ref(data).orderByChild("number").limitToFirst(1000).once('value', function(snapshot){
             snapshot.forEach(
                 function(ChildSnapshot){
                     let rn=ChildSnapshot.val().number;
