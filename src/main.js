@@ -1,40 +1,25 @@
 let qrcode = document.querySelector("img");
-// qrtext = document.querySelector("textarea");
 let qrbtn = document.getElementById("genBtn");
-//let atbtn = document.getElementById("genAtt");
-//let pdfbtn = document.getElementById("pdf")
 
 qrbtn.addEventListener("click", both);
 
 document.getElementById("sheet").style.visibility='hidden';
 
 function generateQR() {
-   // let time = new Date();
-    
     var randomString = "";
     var characters = 'qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM';
     for (var i = 0; i < characters.length; i++){
         randomString += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     let size = "1000x1000";
-    //let sub = qrtext.value;
-    //let data = sub + "-" + randomString;
     let data = randomString;
     let baseURL = "http://api.qrserver.com/v1/create-qr-code/";
     let url = baseURL + "?size=" + size + "&data="+data;
     qrcode.src = url;
-    //var database = firebase.database();
     firebase.database().ref(data)
-    //database.ref(data);
-    //ref.push(data);
-    
    
-
-
-   // atbtn.addEventListener("click", FetchAllData);
-
     function FetchAllData() {
-        firebase.database().ref(data).orderByChild("number").limitToFirst(100).once('value', function(snapshot){
+        firebase.database().ref(data).orderByChild("number").limitToFirst(333).once('value', function(snapshot){
             snapshot.forEach(
                 function(ChildSnapshot){
                     let rn=ChildSnapshot.val().number;
@@ -42,22 +27,12 @@ function generateQR() {
                 }
             );
         });
-
-        // function addItemsToList(rollNo){
-        // var ul=document.getElementById('list' );
-        // var _rollNo=document.createElement('li');
-        // _rollNo.innerHTML='Roll No:'+ rollNo;
-        // ul.appendChild(_rollNo);
-        // };
         var srno= 0;
         function addItemsToList(rollNo){
             var tbody=document.getElementById('tbody1');
             var trow = document.createElement('tr');
             var td1 = document.createElement('td');
             var td2 = document.createElement('td');
-            // let time = new Date();
-            // let head = sub + '-' + time
-            // document.getElementById("info").innerHTML=head;
             td1.innerHTML= ++srno;
             td2.innerHTML= rollNo;
             trow.appendChild(td1);
@@ -65,17 +40,13 @@ function generateQR() {
             tbody.appendChild(trow);
             };
     };
-    window.setTimeout(FetchAllData,9600)
+    window.setTimeout(FetchAllData,9000)
 }
 
 function hideQR(){
     document.getElementById("temp").style.visibility='hidden';
-    
-}
-// function showsh(){
-//     document.getElementById("sheet").style.visibility='visible';
+    }
 
-// }
 function start(){
     let t = 10;
     const countdownEL = document.getElementById('countdown');
@@ -85,19 +56,9 @@ function start(){
         t--;
     }
     window.setTimeout(hideQR,10000);
-  //  window.setTimeout(showsh,15000);
-    qrbtn.disabled = true;
-   
+    qrbtn.disabled = true; 
 }
 
-function both(){
-    generateQR();
-    start();
-    window.setTimeout(generate,10000);
-}
-
-
-//pdfbtn.addEventListener("click", generate);
 function generate() {  
     var doc = new jsPDF('p', 'pt', 'letter');  
     var htmlstring = '';  
@@ -143,3 +104,9 @@ function generate() {
     })  
     doc.save('Attendence.pdf');  
 } 
+
+function both(){
+    generateQR();
+    start();
+    window.setTimeout(generate,11000);
+}
