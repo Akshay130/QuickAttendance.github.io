@@ -39,6 +39,7 @@ img {
 button {
     font-size: 1rem;
     border: none;
+    width: 287px;
     outline: none;
     background-color:#232323;
     padding: 0.5rem 1rem;
@@ -49,6 +50,7 @@ button {
 }
 #countdown {
     font-size: 1rem;
+    width: 233px;
     border: none;
     outline: none;
     padding: 0.5rem 1rem;
