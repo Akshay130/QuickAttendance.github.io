@@ -80,7 +80,7 @@ function generate() {
         width: 600  
     };  
     var y = 20;  
-    let h ='Attendence - ' + new Date();
+    let h ='Attendance - ' + new Date();
     doc.setLineWidth(2);  
     doc.text(40, y = y + 30, h);  
     doc.autoTable({  
@@ -102,7 +102,7 @@ function generate() {
             minCellHeight: 20  
         }  
     })  
-    doc.save('Attendence.pdf');  
+    doc.save('Attendance.pdf');  
 } 
 
 function both(){
