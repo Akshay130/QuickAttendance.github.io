@@ -103,7 +103,7 @@ function generate() {
             minCellHeight: 20  
         }  
     })
-    doc.text(z);
+    doc.text(40, y = y + 30,z);
     doc.save('Attendance.pdf');  
 } 
 
