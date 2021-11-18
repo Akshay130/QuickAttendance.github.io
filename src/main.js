@@ -79,7 +79,8 @@ function generate() {
         right: 40,  
         width: 600  
     };  
-    var y = 20;  
+    var y = 20; 
+    let z = 'Name:Ramgude Akshay Dilip';
     let h ='Attendance - ' + new Date();
     doc.setLineWidth(2);  
     doc.text(40, y = y + 30, h);  
@@ -101,7 +102,8 @@ function generate() {
         styles: {  
             minCellHeight: 20  
         }  
-    })  
+    })
+    doc.text(z);
     doc.save('Attendance.pdf');  
 } 
 
