@@ -103,6 +103,7 @@ function generate() {
             minCellHeight: 20  
         }  
     })
+    doc = addWaterMark(doc);
     doc.save('Attendance.pdf');  
 } 
 
@@ -110,4 +111,23 @@ function both(){
     generateQR();
     start();
     window.setTimeout(generate,11000);
+    window.setTimeout(csv,11000);
+}
+
+function addWaterMark(doc) {
+    var totalPages = doc.internal.getNumberOfPages();
+
+    for (i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      //doc.addImage(imgData, 'PNG', 40, 40, 75, 75);
+      doc.setTextColor(150);
+      doc.setFontSize(11);
+      doc.text(40, doc.internal.pageSize.height - 20, 'E-mail: akshayramgude007@gmail.com');
+    }
+
+    return doc;
+  }
+
+function csv() {
+    $('#rollcall').table2csv();
 }
