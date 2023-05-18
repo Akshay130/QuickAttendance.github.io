@@ -32,7 +32,9 @@
 
       init() {
         // Retrieve parameters from the query string or other sources
-        this._origin = 'Pune';
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this._origin = urlParams.get('origin');
         this._destination = 'Nashik';
         this._waypoints = 'Beed;Mumbai';
 
