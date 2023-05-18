@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GmapsARv7</title>
+  <style>
+    /* Set the height and width of the container */
+    #mapContainer {
+      height: 500px;
+      width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <div id="mapContainer"></div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.47&key=AIzaSyBB3kwVfAfHN9qhXHPx8zct-2JkFYG_DCw"></script>
+  <script>
+    // Define the GmapsARv7 class
+    class GmapsARv7 {
+      constructor() {
+        // Initialize variables
+        this._map = null;
+        this._directionsService = null;
+        this._directionsRenderer = null;
+       // this._apiKey = 'YOUR_API_KEY';
+        this._origin = '';
+        this._destination = '';
+        this._waypoints = '';
+        this._lat = 0;
+        this._lng = 0;
+      }
+
+      init() {
+        // Retrieve parameters from the query string or other sources
+        this._origin = 'Pune';
+        this._destination = 'Nashik';
+        this._waypoints = 'Beed;Mumbai';
+
+        // Create the map container
+        this._container = document.getElementById('mapContainer');
+
+        // Get the user's current location
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this._lat = position.coords.latitude;
+            this._lng = position.coords.longitude;
+            this._initializeMap();
+          });
+        } else {
+          this._initializeMap();
+        }
+      }
+
+      _initializeMap() {
+        // Create a map centered on the user's location
+        this._map = new google.maps.Map(this._container, {
+          center: { lat: this._lat, lng: this._lng },
+          zoom: 5
+        });
+
+        // Create a directions service and renderer
+        this._directionsService = new google.maps.DirectionsService();
+        this._directionsRenderer = new google.maps.DirectionsRenderer({ map: this._map });
+
+        // Split waypoints string into an array
+        const wps = this._waypoints.split(';').map((s) => {
+          return { location: s };
+        });
+
+        // Create a directions request
+        const request = {
+          origin: this._origin,
+          destination: this._destination,
+          waypoints: wps,
+          optimizeWaypoints: true,
+          travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        // Send the directions request
+        this._directionsService.route(request, (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this._directionsRenderer.setDirections(result);
+          }
+        });
+      }
+    }
+
+    // Create an instance of the GmapsARv7 class and initialize the map
+    const gmapsARv7 = new GmapsARv7();
+    gmapsARv7.init();
+  </script>
+</body>
+</html>
