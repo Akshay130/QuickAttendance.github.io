@@ -58,7 +58,7 @@
       var waypoints = [];
 
       if (waypointsParam) {
-        waypoints = waypointsParam.split(';').map(function(waypoint) {
+        waypoints = waypointsParam.split('|').map(function(waypoint) {
           return { location: waypoint };
         });
       }
@@ -70,9 +70,9 @@
 
       var request = {
         origin: origin,
-        destination: destination,
         waypoints: waypoints,
-        travelMode: google.maps.TravelMode.DRIVING
+        destination: destination,
+        optimizeWaypoints: true
       };
 
       directionsService.route(request, function(result, status) {
